@@ -11,7 +11,10 @@ export const TCanvas = () => {
             <Suspense fallback={null}>
                <mesh>
                   <sphereGeometry />
-                  <meshBasicMaterial wireframe={true} />
+                  <meshBasicMaterial
+                     color="hotpink"
+                     wireframe={true}
+                  />
                </mesh>
             </Suspense>
          </Canvas>
