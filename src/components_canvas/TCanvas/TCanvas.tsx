@@ -1,6 +1,7 @@
 import { Suspense } from "react"
 import { Canvas } from "@react-three/fiber"
 import styled from "styled-components/macro"
+import SimpleShaderMaterial from "@components_canvas/SimpleShaderMaterial/SimpleShaderMaterial"
 
 export const TCanvas = () => {
    return (
@@ -11,10 +12,7 @@ export const TCanvas = () => {
             <Suspense fallback={null}>
                <mesh>
                   <sphereGeometry />
-                  <meshBasicMaterial
-                     color="hotpink"
-                     wireframe={true}
-                  />
+                  <SimpleShaderMaterial />
                </mesh>
             </Suspense>
          </Canvas>
