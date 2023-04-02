@@ -20,6 +20,7 @@
       "@src/*": ["./src/*"],
       "@utils/*": ["./src/utils/*"],
       "@components/*": ["./src/components/*"],
+      "@components_canvas/*": ["./src/components_canvas/*"],
       "@state/*": ["./src/state/*"],
       "@data/*": ["./src/data/*"],
       "@layout/*": ["./src/layout/*"],
