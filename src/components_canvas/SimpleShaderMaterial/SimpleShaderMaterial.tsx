@@ -3,28 +3,43 @@ import shaderMaterial from "@src/lib/dreiShaderMaterial"
 import vertex from "./glsl/vertex.glsl"
 //@ts-ignore
 import fragment from "./glsl/fragment.glsl"
-import { extend } from "@react-three/fiber"
-import { animated } from "@react-spring/three"
+import { extend, useFrame } from "@react-three/fiber"
+import React from "react"
+import { ShaderMaterial, Vector2 } from "three"
 
-type Props = {}
+type SimpleShaderTypes = {
+   [key: string]: any
+}
 
 const SimpleShader = shaderMaterial(
    {
-      uTime: { value: 0 }
+      uTime: { value: 0 },
+      uPointer: { value: new Vector2(0, 0) }
    },
    vertex,
    fragment,
-   () => console.log("init")
+   () => console.log("init shader")
 )
 
 extend({ SimpleShader })
 
-// @ts-ignore
-const AnimatedSimpleShader = animated("SimpleShader")
+const SimpleShaderMaterial = (props: SimpleShaderTypes) => {
+   const shaderRef = React.useRef<ShaderMaterial>()
+   useFrame(({ clock, pointer }) => {
+      shaderRef.current.uniforms.uTime.value = clock.getElapsedTime()
+      shaderRef.current.uniforms.uPointer.value = new Vector2(
+         (pointer.x + 1) * 0.5,
+         (pointer.y + 1) * 0.5
+      )
+   })
 
-const SimpleShaderMaterial = (props: Props) => {
-   // @ts-ignore
-   return <AnimatedSimpleShader />
+   return (
+      // @ts-ignore
+      <simpleShader
+         {...props}
+         ref={shaderRef}
+      />
+   )
 }
 
 export default SimpleShaderMaterial

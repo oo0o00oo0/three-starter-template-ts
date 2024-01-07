@@ -1,11 +1,10 @@
 import { defineConfig } from "vite"
 import react from "@vitejs/plugin-react"
-import macrosPlugin from "vite-plugin-babel-macros"
 import glsl from "vite-plugin-glsl"
 
 // https://vitejs.dev/config/
 export default defineConfig({
-   plugins: [react(), macrosPlugin(), glsl()],
+   plugins: [react(), glsl()],
    server: { port: 1111 },
    resolve: {
       alias: [
