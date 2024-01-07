@@ -12,9 +12,12 @@ void main() {
 
   float d = length(uv);
 
+  float speed = uPointer.y * 10.;
+
   d -= uPointer.x;
 
   vec3 colour = vec3(d, sin(vUv * 10.0 + uTime * 10.).x, vUv.y);
 
   gl_FragColor = vec4(colour, 1.0);
+
 }

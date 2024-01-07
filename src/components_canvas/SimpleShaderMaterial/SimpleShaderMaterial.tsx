@@ -33,6 +33,10 @@ const SimpleShaderMaterial = (props: SimpleShaderTypes) => {
       )
    })
 
+   React.useEffect(() => {
+      console.log(shaderRef.current)
+   }, [])
+
    return (
       // @ts-ignore
       <simpleShader
